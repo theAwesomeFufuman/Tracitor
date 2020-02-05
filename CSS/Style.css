@@ -1,0 +1,38 @@
+* {
+    color: darkorange;
+}
+
+@media only screen and (max-width: 767px) {
+    body {
+        background: url('../img/background.jpg') center center no-repeat fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        -o-background-size: cover;
+    }
+}
+
+body {
+    background: url('../img/background.jpg') center center no-repeat fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+#mainTitle {
+    padding: 7vh 0 7vh 0;
+    text-align: center;
+}
+
+#subtitleRow {
+    padding: 0 0 5vh 0;
+}
+
+#addCategoryBtn {
+    margin: 0 0 1vh 0;
+}
+
+#inputDivs > div > input {
+    margin: 0 0 0.5vh 0;
+}

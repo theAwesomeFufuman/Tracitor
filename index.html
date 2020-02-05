@@ -3,8 +3,86 @@
     <head>
         <meta charset="UTF-8">
         <title>Report generator</title>
-        <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+
+        <!-- Main CSS file -->
+        <link href="CSS/Style.css" rel="stylesheet" />
+
+        <!-- JQuery CDN -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+        <!-- clipboard-polyfill CDN -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard-polyfill/2.8.6/clipboard-polyfill.promise.js"></script>
+
+        <!-- Bootstrap CSS CDN -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+        <!-- Popper JS CDN -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+        <!-- Bootstrap JavaScript CDN -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+        <!-- Tracery file -->
+        <script defer src="JS/tracery.js"></script>
+
+        <!-- Main JS file -->
+        <script src="JS/Script.js"></script>
     </head>
     <body>
+        <div class="overlay">
+            <div class="container features">
+                <div class="row">
+                    <div class="col">
+                        <h1 id="mainTitle">
+                            Report Generator
+                        </h1>
+                    </div>
+                </div>
+                <div class="row" id="subtitleRow">
+                    <div class="col-lg-4 col-md-4 col-sm-12">
+                        <div id="1stTitleDiv">
+                            <h3>Step 1: Create the grammar</h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12">
+                        <div id="2ndTitleDiv">
+                            <h3>Step 2: Create your report with the grammar placeholders</h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12">
+                        <div id="3rdTitleDiv">
+                            <h3>Step 3: Preview the result</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-12">
+                        <button id="addCategoryBtn" class="btn btn-light btn-block">✔️ Add another category</button>
+                        <div id="inputDivs">
+                            <div class="form-group" id="form-group1">
+                                <input id="category1" class="form-control categoryInput" placeholder="🏷️ Give this category a title, e.g. 'animals'" />
+                                <input id="shuffleWords1" class="form-control shuffleWordInput" placeholder="❓ Words to shuffle, e.g. 'deer, fox, rabbit'" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12">
+                        <div id="previewDiv">
+                            <div class="form-group">
+                                <textarea id="reportInputText" class="form-control" rows="10"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12">
+                        <button id="addCategoryBtn" class="btn btn-light btn-block">⚙️ Create report</button>
+                        <button id="addCategoryBtn" class="btn btn-light btn-block">📋 Copy the report to the clipboard</button>
+                        <div id="resultDiv">
+                            <div class="form-group">
+                                <textarea id="reportOutputText" class="form-control" rows="10"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
