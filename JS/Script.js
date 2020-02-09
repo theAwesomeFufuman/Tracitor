@@ -1,11 +1,12 @@
-﻿var categoriesArray = ['category1'];
+﻿var categoriesArray = ['categoryInput1'];
 var shuffleWordsArray = ['shuffleWordsInput1'];
 var symbols = {};
 
-var numCategories = categoriesArray.length;
+var numCategories = 1;
 
 $(document).ready(function () {
     $(document).on('keydown keyup change', '.categoryInput, .shuffleWordInput', function () {
+        $(this).parent().attr('id', 'activeDiv');
         inputFieldsToJson();
     });
 
@@ -22,6 +23,7 @@ $(document).ready(function () {
     });
 });
 
+/*
 function inputFieldsToJson() {
     for (var i = 0; i < categoriesArray.length; i++) {
         var tempArray = [];
@@ -31,8 +33,26 @@ function inputFieldsToJson() {
             tempArray = tempString.split(',');
         }
         var tempObjectKey = ($('#' + categoriesArray[i]).val());
+        console.log($('#' + categoriesArray[i]).val());
         symbols = { [tempObjectKey]: tempArray };
     }
+}
+*/
+
+function inputFieldsToJson(){
+    $('#activeDiv').children().each(function() {
+        var tempObjectKey;
+        var tempArray;
+        if ($(this).hasClass('categoryInput')) {
+            tempObjectKey = $(this).val();
+        }
+
+        if ($(this).hasClass('shuffleWordInput')) {
+            tempArray = $(this).val().split(',');
+        }
+
+        symbols = { [tempObjectKey]: tempArray };
+    });
 }
 
 function generateTraceryOutput() {
@@ -56,31 +76,5 @@ function addCategory() {
 }
 
 function removeCategory(elementSequenceNumber) {
-    elementSequenceNumber = elementSequenceNumber.charAt(elementSequenceNumber.length - 1);
-    var catNum;
 
-    for (var i = 0; i < categoriesArray.length; i++) {
-        catNum = categoriesArray[i].charAt(categoriesArray[i].length - 1);
-        if (catNum == elementSequenceNumber) {
-            $('#form-group' + elementSequenceNumber).remove();
-            categoriesArray.splice(i, 1);
-            shuffleWordsArray.splice(i, 1);
-
-            numCategories = categoriesArray.length;
-        }
-    }
-
-    console.log(categoriesArray);
-
-    for (var i = 0; i < categoriesArray.length; i++) {
-        catNum = categoriesArray[i].charAt(categoriesArray[i].length - 1);
-        if (catNum != (i + 1)) {
-            $('#form-group' + catNum).attr('id', 'form-group' + (i + 1));
-            $('#category' + catNum).attr('id', 'category' + (i + 1));
-            $('#shuffleWordsInput' + catNum).attr('id', 'shuffleWordsInput' + (i + 1));
-            $('#RemoveCategoryBtn' + catNum).attr('id', 'RemoveCategoryBtn' + (i + 1));
-            categoriesArray[i] = 'category' + (i + 1);
-            shuffleWordsArray[i] = 'shuffleWordsInput' + (i + 1);
-        }
-    }
 }
