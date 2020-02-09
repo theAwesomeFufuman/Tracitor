@@ -59,9 +59,10 @@
                     <div class="col-lg-4 col-md-4 col-sm-12">
                         <button id="addCategoryBtn" class="btn btn-light btn-block">✔️ Add another category</button>
                         <div id="inputDivs">
-                            <div class="form-group" id="form-group1">
-                                <input id="category1" class="form-control categoryInput" placeholder="🏷️ Give this category a title, e.g. 'animals'" />
-                                <input id="shuffleWords1" class="form-control shuffleWordInput" placeholder="❓ Words to shuffle, e.g. 'deer, fox, rabbit'" />
+                            <div class="form-group categoryDivs" id="form-group1">
+                                <input id="categoryInput1" class="form-control categoryInput" placeholder="🏷️ Give this category a title, e.g. 'animals'" />
+                                <input id="shuffleWordsInput1" class="form-control shuffleWordInput" placeholder="❓ Words to shuffle, e.g. 'deer, fox, rabbit'" />
+                                <button id="removeCategoryBtn1" class="btn btn-light btn-block">❌ Remove this category</button>
                             </div>
                         </div>
                     </div>
@@ -73,8 +74,8 @@
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-12">
-                        <button id="addCategoryBtn" class="btn btn-light btn-block">⚙️ Create report</button>
-                        <button id="addCategoryBtn" class="btn btn-light btn-block">📋 Copy the report to the clipboard</button>
+                        <button id="createReportBtn" class="btn btn-light btn-block">⚙️ Create report</button>
+                        <button id="copyBtn" class="btn btn-light btn-block">📋 Copy the report to the clipboard</button>
                         <div id="resultDiv">
                             <div class="form-group">
                                 <textarea id="reportOutputText" class="form-control" rows="10"></textarea>

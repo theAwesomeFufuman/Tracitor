@@ -33,6 +33,11 @@ body {
     margin: 0 0 1vh 0;
 }
 
-#inputDivs > div > input {
+.categoryDivs > input, .categoryDivs > button {
     margin: 0 0 0.5vh 0;
+}
+
+/*Will change dynamically in Script.js functions addCategory() and removeCategory()*/
+.categoryDivs > button {
+    display:none;
 }
