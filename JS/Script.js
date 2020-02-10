@@ -1,7 +1,4 @@
-﻿var categoriesArray = ['categoryInput1'];
-var shuffleWordsArray = ['shuffleWordsInput1'];
-var symbols = {};
-
+﻿var symbols = {};
 var numCategories = 1;
 
 $(document).ready(function () {
@@ -19,40 +16,33 @@ $(document).ready(function () {
     });
 
     $(document).on('click', '.categoryDivs > button', function () {
-        removeCategory($(this).attr('id'));
+        $(this).parent().attr('id', 'activeDiv');
+        removeCategory();
     });
 });
 
-/*
-function inputFieldsToJson() {
-    for (var i = 0; i < categoriesArray.length; i++) {
-        var tempArray = [];
-        for (var j = 0; j < shuffleWordsArray.length; j++) {
-            var tempString = ($('#' + shuffleWordsArray[j]).val());
-            tempString = tempString.trim();
-            tempArray = tempString.split(',');
-        }
-        var tempObjectKey = ($('#' + categoriesArray[i]).val());
-        console.log($('#' + categoriesArray[i]).val());
-        symbols = { [tempObjectKey]: tempArray };
-    }
-}
-*/
-
 function inputFieldsToJson(){
-    $('#activeDiv').children().each(function() {
         var tempObjectKey;
         var tempArray;
+    $('#activeDiv').children().each(function() {
         if ($(this).hasClass('categoryInput')) {
-            tempObjectKey = $(this).val();
+            tempObjectKey = $(this).val().trim();
         }
 
         if ($(this).hasClass('shuffleWordInput')) {
             tempArray = $(this).val().split(',');
         }
-
-        symbols = { [tempObjectKey]: tempArray };
     });
+
+    if (tempArray != "") {
+        for (var i = 0; i < tempArray.length; i++) {
+            tempArray[i] = tempArray[i].trim();
+        }
+
+        symbols[tempObjectKey] = tempArray;   
+    }
+
+    $('#activeDiv').attr('id', '');
 }
 
 function generateTraceryOutput() {
@@ -62,19 +52,22 @@ function generateTraceryOutput() {
 }
 
 function addCategory() {
-    categoriesArray.push('category' + numCategories);
-    shuffleWordsArray.push('shuffleWordsInput' + numCategories);
-
-    numCategories = categoriesArray.length;
-
-    $('#inputDivs').append('<div class=\"form-group categoryDivs\" id=\"newForm-group\"><input id=\"newCategory\" class=\"form-control categoryInput\" placeholder=\"\uD83C\uDFF7\uFE0F Give this category a title, e.g. \'animals\'\" \/><input id=\"newShuffleWords\" class=\"form-control shuffleWordInput\" placeholder=\"\u2753 Words to shuffle, e.g. \'deer, fox, rabbit\'\" \/><button id=\"newRemoveCategoryBtn\" class=\"btn btn-light btn-block\">\u274C Remove this category<\/button><\/div>');
-    $('#newForm-group').attr('id', 'form-group' + numCategories);
-    $('#newCategory').attr('id', 'category' + numCategories);
-    $('#newShuffleWords').attr('id', 'shuffleWordsInput' + numCategories);
-    $('#newRemoveCategoryBtn').attr('id', 'RemoveCategoryBtn' + numCategories);
+    numCategories += 1;
+    $('#inputDivs').append('<div class=\"form-group categoryDivs\"><input class=\"form-control categoryInput\" placeholder=\"\uD83C\uDFF7\uFE0F Give this category a title, e.g. \'animals\'\" \/><input class=\"form-control shuffleWordInput\" placeholder=\"\u2753 Words to shuffle, e.g. \'deer, fox, rabbit\'\" \/><button class=\"btn btn-light btn-block\">\u274C Remove this category<\/button><\/div>');
     $('.categoryDivs > button').show();
 }
 
 function removeCategory(elementSequenceNumber) {
+    numCategories -= 1;
+    $('#activeDiv').children().each(function() {
+        if ($(this).hasClass('categoryInput')) {
+            delete symbols[$(this).val()];
+        }
+    });
 
+    $('#activeDiv').remove();
+
+    if (numCategories == 1) {
+        $('.categoryDivs > button').hide();
+    }
 }
