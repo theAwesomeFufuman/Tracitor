@@ -63,7 +63,7 @@ body {
     padding-bottom: 1vh;
 }
 
-#copyBtn {
+#reportCopyBtn {
     margin: 1.75vh 0 1.75vh 0;
 }
 
@@ -74,4 +74,9 @@ body {
 /*Will change dynamically in Script.js functions addCategory() and removeCategory()*/
 .categoryDivs > button {
     display:none;
+}
+
+#accordionBtn {
+    text-decoration: none;
+    color: black;
 }

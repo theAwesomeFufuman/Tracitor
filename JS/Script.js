@@ -20,12 +20,8 @@ $(document).ready(function () {
         removeCategory();
     });
 
-    $(document).on('click', '#addCategoryBtn', function () {
-        addCategory();
-    });
-
-    $(document).on('click', '#copyBtn', function () {
-        copyToClipboard();
+    $(document).on('click', '.copyBtn', function () {
+        copyToClipboard($(this).attr('data-textarea'));
     });
 });
 
@@ -47,9 +43,10 @@ function inputFieldsToJson(){
             tempArray[i] = tempArray[i].trim();
         }
 
-        symbols[tempObjectKey] = tempArray;   
+        symbols[tempObjectKey] = tempArray;
     }
 
+    $('#srcJsonObject').val(JSON.stringify(symbols, null, 4));
     $('#activeDiv').attr('id', '');
 }
 
@@ -65,7 +62,7 @@ function addCategory() {
     $('.categoryDivs > button').show();
 }
 
-function removeCategory(elementSequenceNumber) {
+function removeCategory() {
     numCategories -= 1;
     $('#activeDiv').children().each(function() {
         if ($(this).hasClass('categoryInput')) {
@@ -80,8 +77,8 @@ function removeCategory(elementSequenceNumber) {
     }
 }
 
-function copyToClipboard() {
+function copyToClipboard(valToCopy) {
     var dt = new clipboard.DT();
-    dt.setData("text/plain", $('#reportOutputText').val());
+    dt.setData("text/plain", $(valToCopy).val());
     clipboard.write(dt);
 }
