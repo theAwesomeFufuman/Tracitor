@@ -29,8 +29,8 @@ body {
     padding: 0 0 5vh 0;
 }
 
-#addCategoryBtn {
-    margin: 0 0 1vh 0;
+#addCategoryBtn, #copyBtn {
+    margin: 1vh 0 1vh 0;
 }
 
 .categoryDivs > input, .categoryDivs > button {

@@ -19,6 +19,14 @@ $(document).ready(function () {
         $(this).parent().attr('id', 'activeDiv');
         removeCategory();
     });
+
+    $(document).on('click', '#addCategoryBtn', function () {
+        addCategory();
+    });
+
+    $(document).on('click', '#copyBtn', function () {
+        copyToClipboard();
+    });
 });
 
 function inputFieldsToJson(){
@@ -70,4 +78,10 @@ function removeCategory(elementSequenceNumber) {
     if (numCategories == 1) {
         $('.categoryDivs > button').hide();
     }
+}
+
+function copyToClipboard() {
+    var dt = new clipboard.DT();
+    dt.setData("text/plain", $('#reportOutputText').val());
+    clipboard.write(dt);
 }
