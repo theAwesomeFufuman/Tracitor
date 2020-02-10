@@ -29,8 +29,42 @@ body {
     padding: 0 0 5vh 0;
 }
 
-#addCategoryBtn, #copyBtn {
-    margin: 1vh 0 1vh 0;
+#inputDivs {
+    max-height: 24vh;
+    overflow: auto;
+}
+
+#inputDivs::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: transparent;
+}
+
+#inputDivs::-webkit-scrollbar {
+    width: 12px;
+    background-color: transparent;
+}
+
+#inputDivs::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: darkorange;
+}
+
+#addCategoryBtn {
+    margin:  0 0 1vh 0;
+}
+
+.categoryDivs:last-child, .categoryDivs:last-child>button {
+    margin-bottom: 0;
+}
+
+#paddingDiv {
+    padding-bottom: 1vh;
+}
+
+#copyBtn {
+    margin: 1.75vh 0 1.75vh 0;
 }
 
 .categoryDivs > input, .categoryDivs > button {
