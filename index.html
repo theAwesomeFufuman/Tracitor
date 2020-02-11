@@ -70,13 +70,13 @@
                     <div class="col-lg-4 col-md-4 col-sm-12">
                         <div id="previewDiv">
                             <div class="form-group">
-                                <textarea id="reportInputText" class="form-control" rows="15"></textarea>
+                                <textarea id="reportInputText" class="form-control originInput" rows="15"></textarea>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-12">
-                        <button id="createReportBtn" class="btn btn-light btn-block">⚙️ Create report</button>
-                        <button id="reportCopyBtn" class="btn btn-light btn-block copyBtn" data-textarea="#reportOutputText">📋 Copy the report to the clipboard</button>
+                        <button id="createReportBtn" class="btn btn-light btn-block">⚙️ Generate text</button>
+                        <button id="reportCopyBtn" class="btn btn-light btn-block copyBtn" data-textarea="#reportOutputText">📋 Copy the result to the clipboard</button>
                         <div id="resultDiv">
                             <div class="form-group">
                                 <textarea id="reportOutputText" class="form-control" rows="10"></textarea>
@@ -92,14 +92,15 @@
                                   <div class="card-header" id="accordionHeading" data-toggle="collapse" data-target="#accordionCollapse" aria-expanded="true" aria-controls="accordionCollapse">
                                     <h2 class="mb-0">
                                       <button class="btn btn-link" type="button" id="accordionBtn">
-                                        👨‍💻 Show JSON object
+                                        👨‍💻 Show JSON source code
                                       </button>
                                     </h2>
                                   </div>
                                   <div id="accordionCollapse" class="collapse" aria-labelledby="accordionHeading" data-parent="#accordionDiv">
                                     <div class="card-body">
                                         <textarea id="srcJsonObject" class="form-control" rows="10"></textarea>
-                                      <button id="jsonCopyBtn" class="btn btn-light btn-block copyBtn" data-textarea="#srcJsonObject">📋 Copy JSON object to the clipboard</button>
+                                        <button id="jsonCopyBtn" class="btn btn-light btn-block copyBtn" data-textarea="#srcJsonObject">📋 Copy JSON to the clipboard</button>
+                                        <button id="importJsonBtn" class="btn btn-light btn-block" data-textarea="#srcJsonObject">📤 Import JSON for use in the form above</button>
                                     </div>
                                   </div>
                                 </div>
