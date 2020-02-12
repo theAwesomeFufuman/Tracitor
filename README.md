@@ -13,7 +13,7 @@ I would like to thank the authors of the following technologies for allowing me 
  - [JQuery](https://jquery.com/)
  - [Tracery](https://www.tracery.io/)
  
-### Background image source
+### Background image
 [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Lower_Manhattan_from_Jersey_City_November_2014_panorama_3.jpg)
 ### License
 > MIT License
