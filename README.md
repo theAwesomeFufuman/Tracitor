@@ -6,7 +6,7 @@ Download the repository and open index.html and you are good to go!
 ### Contact
 You can reach me at tracitor[dot]contact[at]gmail[dot]com
 ### Acknowledgments
-I would like to thank the authors of the following technologies, without which this small project would not be possible.
+I would like to thank the authors of the following technologies. Without them, this small project would not be possible.
  - [beautifier.io](https://beautifier.io/)
  - [Bootstrap](https://getbootstrap.com/)
  - [clipboard-polyfill](https://github.com/lgarron/clipboard-polyfill)
