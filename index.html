@@ -25,6 +25,9 @@
         <!-- Tracery file -->
         <script defer src="JS/tracery.js"></script>
 
+        <!-- beautifier.io [JS] CDN -->
+        <script src="https://cdn.rawgit.com/beautify-web/js-beautify/v1.10.3/js/lib/beautify.js"></script>
+
         <!-- Main JS file -->
         <script src="JS/Script.js"></script>
     </head>
@@ -75,7 +78,7 @@
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-12">
-                        <button id="createReportBtn" class="btn btn-light btn-block">⚙️ Generate text</button>
+                        <button id="createReportBtn" class="btn btn-light btn-block" data-textarea="#srcJsonObject">⚙️ Generate text</button>
                         <button id="reportCopyBtn" class="btn btn-light btn-block copyBtn" data-textarea="#reportOutputText">📋 Copy the result to the clipboard</button>
                         <div id="resultDiv">
                             <div class="form-group">

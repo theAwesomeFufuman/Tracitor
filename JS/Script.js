@@ -7,7 +7,12 @@ $(document).ready(function () {
         inputFieldsToJson();
     });
 
-    $(document).on('click', '#createReportBtn', function () {
+    $(document).on('click', '#createReportBtn, #importJsonBtn', function () {
+        var targetElement = $(this).attr('data-textarea');
+
+        $(targetElement).val(js_beautify($(targetElement).val()));
+        importJson(targetElement);
+
         generateTraceryOutput();
     });
 
@@ -21,11 +26,13 @@ $(document).ready(function () {
     });
 
     $(document).on('click', '.copyBtn', function () {
-        copyToClipboard($(this).attr('data-textarea'));
-    });
+        var targetElement = $(this).attr('data-textarea');
 
-    $(document).on('click', '#importJsonBtn', function () {
-        importJson($(this).attr('data-textarea'));
+        if (targetElement == '#srcJsonObject') {
+            $(targetElement).val(js_beautify($(targetElement).val()));
+        }
+
+        copyToClipboard(targetElement);
     });
 });
 
@@ -59,8 +66,7 @@ function inputFieldsToJson(){
     if (numCategoriesInJsonObject() > numCategories) {
         removeObsoleteJsonObjects(tempObjectKey, tempArray);
     }
-
-    $('#srcJsonObject').val(JSON.stringify(symbols, null, 4));
+    $('#srcJsonObject').val(js_beautify(JSON.stringify(symbols)));
     $('#activeDiv').attr('id', '');
 }
 
@@ -93,6 +99,7 @@ function removeCategory() {
     if (numCategories == 1) {
         $('.categoryDivs > button').hide();
     }
+    $('#srcJsonObject').val(js_beautify(JSON.stringify(symbols)));
 }
 
 function copyToClipboard(valToCopy) {
@@ -102,7 +109,6 @@ function copyToClipboard(valToCopy) {
 }
 
 function importJson(objectToImport) {
-    var importAllowedByUsr = confirm("This will remove all of the categories that you have previously created.\nContinue?");
 
     try {
         var jsonObject = JSON.parse($(objectToImport).val());
@@ -113,7 +119,7 @@ function importJson(objectToImport) {
         }
     }
 
-    if (importAllowedByUsr && !redirectUsr) {
+    if (!redirectUsr) {
         $('#inputDivs').children().each(function() {
             $(this).remove();
             numCategories -= 1;
