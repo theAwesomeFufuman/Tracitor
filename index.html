@@ -41,72 +41,72 @@
                         </h1>
                     </div>
                 </div>
-                <div class="row" id="subtitleRow">
-                    <div class="col-lg-4 col-md-4 col-sm-12">
-                        <div id="1stTitleDiv">
-                            <h3>Step 1: Create the grammar</h3>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-12">
-                        <div id="2ndTitleDiv">
-                            <h3>Step 2: Create your report with the grammar placeholders</h3>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-12">
-                        <div id="3rdTitleDiv">
-                            <h3>Step 3: Preview the result</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-4 col-md-4 col-sm-12">
-                        <button id="addCategoryBtn" class="btn btn-light btn-block">✔️ Add another category</button>
-                        <div id="inputDivs">
-                            <div class="form-group categoryDivs">
-                                <input class="form-control categoryInput" placeholder="🏷️ Give this category a title, e.g. 'animals'" />
-                                <input class="form-control shuffleWordInput" placeholder="❓ Words to shuffle, e.g. 'deer, fox, rabbit'" />
-                                <button class="btn btn-light btn-block">❌ Remove this category</button>
-                            </div>
-                        </div>
-                        <div id="paddingDiv"></div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-12">
-                        <div id="previewDiv">
-                            <div class="form-group">
-                                <textarea id="reportInputText" class="form-control originInput" rows="15"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-12">
-                        <button id="createReportBtn" class="btn btn-light btn-block" data-textarea="#srcJsonObject">⚙️ Generate text</button>
-                        <button id="reportCopyBtn" class="btn btn-light btn-block copyBtn" data-textarea="#reportOutputText">📋 Copy the result to the clipboard</button>
-                        <div id="resultDiv">
-                            <div class="form-group">
-                                <textarea id="reportOutputText" class="form-control" rows="10"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12">
                         <div class="srcJsonObjectDiv">
                             <div class="accordion" id="accordionDiv">
                                 <div class="card">
-                                  <div class="card-header" id="accordionHeading" data-toggle="collapse" data-target="#accordionCollapse" aria-expanded="true" aria-controls="accordionCollapse">
+                                  <div class="card-header" id="jsonAccordionHeading" data-toggle="collapse" data-target="#jsonAccordionCollapse" aria-expanded="true" aria-controls="jsonAccordionCollapse">
                                     <h2 class="mb-0">
-                                      <button class="btn btn-link" type="button" id="accordionBtn">
-                                        👨‍💻 Show JSON source code
+                                      <button class="btn btn-link" type="button" id="jsonAccordionBtn">
+                                        👨‍💻 JSON editor
                                       </button>
                                     </h2>
                                   </div>
-                                  <div id="accordionCollapse" class="collapse" aria-labelledby="accordionHeading" data-parent="#accordionDiv">
+                                  <div id="jsonAccordionCollapse" class="collapse" aria-labelledby="jsonAccordionHeading" data-parent="#accordionDiv">
                                     <div class="card-body">
                                         <textarea id="srcJsonObject" class="form-control" rows="10"></textarea>
                                         <button id="jsonCopyBtn" class="btn btn-light btn-block copyBtn" data-textarea="#srcJsonObject">📋 Copy JSON to the clipboard</button>
-                                        <button id="importJsonBtn" class="btn btn-light btn-block" data-textarea="#srcJsonObject">📤 Import JSON for use in the form above</button>
+                                        <button id="importJsonBtn" class="btn btn-light btn-block" data-textarea="#srcJsonObject">📖 Generate story</button>
                                     </div>
                                   </div>
                                 </div>
+                                <div class="card">
+                                    <div class="card-header" id="simpleEditorAccordionHeading" data-toggle="collapse" data-target="#simpleEditorAccordionCollapse" aria-expanded="true" aria-controls="simpleEditorAccordionCollapse">
+                                      <h2 class="mb-0">
+                                        <button class="btn btn-link" type="button" id="simpleEditorAccordionBtn">
+                                            📝 Simple editor
+                                        </button>
+                                      </h2>
+                                    </div>
+                                    <div id="simpleEditorAccordionCollapse" class="collapse" aria-labelledby="simpleEditorAccordionHeading" data-parent="#accordionDiv">
+                                      <div class="card-body">
+                                        <button id="addCategoryBtn" class="btn btn-light btn-block">✔️ Add another category</button>
+                                        <div id="inputDivs">
+                                            <div class="form-group categoryDivs">
+                                                <input class="form-control categoryInput" placeholder="🏷️ Give this category a title, e.g. 'animals'" />
+                                                <input class="form-control shuffleWordInput" placeholder="❓ Words to shuffle, e.g. 'deer, fox, rabbit'" />
+                                                <button class="btn btn-light btn-block">❌ Remove this category</button>
+                                            </div>
+                                        </div>
+                                        <div id="previewDiv">
+                                            <div class="form-group">
+                                                <textarea id="reportInputText" class="form-control originInput" rows="15"></textarea>
+                                            </div>
+                                        </div>
+                                        <button id="importJsonBtn" class="btn btn-light btn-block" data-textarea="#srcJsonObject">📖 Generate story</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="card">
+                                    <div class="card-header" id="resultAccordionHeading" data-toggle="collapse" data-target="#resultAccordionCollapse" aria-expanded="true" aria-controls="resultAccordionCollapse">
+                                      <h2 class="mb-0">
+                                        <button class="btn btn-link" type="button" id="simpleEditorAccordionBtn">
+                                            📖 View generated story
+                                        </button>
+                                      </h2>
+                                    </div>
+                                    <div id="resultAccordionCollapse" class="collapse" aria-labelledby="resultAccordionHeading" data-parent="#accordionDiv">
+                                      <div class="card-body">
+                                        <div id="resultDiv">
+                                            <div class="form-group">
+                                                <textarea id="reportOutputText" class="form-control" rows="10"></textarea>
+                                            </div>
+                                        </div>
+                                        <button id="reportCopyBtn" class="btn btn-light btn-block copyBtn" data-textarea="#reportOutputText">📋 Copy the result to the clipboard</button>
+                                      </div>
+                                    </div>
+                                  </div>
                               </div>
                         </div>
                     </div>
