@@ -3,7 +3,7 @@ var numCategories = 1;
 
 $(document).ready(function () {
     $('#srcJsonObject').attr('placeholder', '⌨️ Start writing your JSON here...\nThis editor uses "origin" as the start symbol for the tracery grammar.');
-    $('#reportInputText').attr('placeholder', '\u270D\uFE0F Start writing your story here...\nUse the rules that you have created by enclosing them with \'#\'s, e.g. \'I love #animals#\'.');
+    $('#reportInputText').attr('placeholder', '\u270D\uFE0F Start writing your story here...\nUse the rules that you have created above by enclosing them with \'#\'s, e.g. \'I love #animals#\'.');
 
     $(document).on('keydown keyup change', '.categoryInput, .shuffleWordInput, .originInput', function () {
         $(this).parent().attr('id', 'activeDiv');

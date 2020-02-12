@@ -20,13 +20,29 @@ body {
     -o-background-size: cover;
 }
 
-#mainTitle {
-    padding: 7vh 0 7vh 0;
-    text-align: center;
+.navbar>h2>a {
+    color: darkorange;
 }
 
-#subtitleRow {
-    padding: 0 0 5vh 0;
+.bg-light>p {
+    margin: 0;
+    color: black;
+}
+
+.bg-light>p>a {
+    color: darkorange;
+}
+
+.bg-light>ul>li>a {
+    color: black;
+}
+
+#editorRow {
+    margin-top: 5vh;
+}
+
+#jsonCopyBtn {
+    margin-top: 1vh;
 }
 
 #inputDivs {
@@ -70,14 +86,6 @@ textarea::-webkit-scrollbar {
     margin-bottom: 0;
 }
 
-#paddingDiv {
-    padding-bottom: 1vh;
-}
-
-#reportCopyBtn {
-    margin: 1.75vh 0 1.75vh 0;
-}
-
 .categoryDivs > input, .categoryDivs > button {
     margin: 0 0 0.5vh 0;
 }
@@ -87,7 +95,7 @@ textarea::-webkit-scrollbar {
     display:none;
 }
 
-.card-header>h2>button {
+.card-header>h2>button, .card-header>h2>button:hover, .card-header>h2>button:visited, .card-header>h2>button:active, .card-header>h2>button:focus {
     text-decoration: none;
-    color: black;
+    color: darkorange;
 }

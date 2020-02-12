@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Report generator</title>
+        <title>Tracitor - a Tracery editor</title>
 
         <!-- Main CSS file -->
         <link href="CSS/Style.css" rel="stylesheet" />
@@ -35,30 +35,98 @@
         <div class="pos-f-t">
             <div class="collapse" id="navbarToggleExternalContent">
               <div class="bg-dark p-4">
-                <h4 class="text-white">Collapsed content</h4>
-                <span class="text-muted">Toggleable via the navbar brand.</span>
+                <div class="accordion" id="navAccordionDiv">
+                  <div class="card bg-dark">
+                    <div class="card-header" id="navAccordionHeadingOne" data-toggle="collapse" data-target="#navAccordionCollapseOne" aria-expanded="true" aria-controls="navAccordionCollapseOne">
+                      <h2 class="mb-0">
+                        <button class="btn btn-link" type="button">
+                          What is this?
+                        </button>
+                      </h2>
+                    </div>
+                    <div id="navAccordionCollapseOne" class="collapse" aria-labelledby="navAccordionHeadingOne" data-parent="#navAccordionDiv">
+                      <div class="card-body bg-light">
+                        <p>An editor for <a href="https://www.tracery.io/" target="_blank">Tracery</a>, made with a simple UI.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card bg-dark">
+                      <div class="card-header" id="navAccordionHeadingTwo" data-toggle="collapse" data-target="#navAccordionCollapseTwo" aria-expanded="true" aria-controls="navAccordionCollapseTwo">
+                        <h2 class="mb-0">
+                          <button class="btn btn-link" type="button">
+                            How do I use it?
+                          </button>
+                        </h2>
+                      </div>
+                      <div id="navAccordionCollapseTwo" class="collapse" aria-labelledby="navAccordionHeadingTwo" data-parent="#navAccordionDiv">
+                        <div class="card-body bg-light">
+                          <p>For a great tutorial on how to use Tracery(and by extension, this editor), please visit <a href="http://www.crystalcodepalace.com/traceryTut.html" target="_blank">this link</a>.<br />The <i>simple editor</i> below works in the same way that the <i>JSON editor</i> works, with the difference being that all the rules are written in text fields instead of in a JSON object and the big text area works as the starting symbol for the Tracery grammar.</p>
+                        </div>
+                      </div>
+                    </div>
+                  <div class="card bg-dark">
+                    <div class="card-header" id="navAccordionHeadingThree" data-toggle="collapse" data-target="#navAccordionCollapseThree" aria-expanded="true" aria-controls="navAccordionCollapseThree">
+                      <h2 class="mb-0">
+                        <button class="btn btn-link" type="button">
+                          Where can I learn more about this project?
+                        </button>
+                      </h2>
+                    </div>
+                    <div id="navAccordionCollapseThree" class="collapse" aria-labelledby="navAccordionHeadingThree" data-parent="#navAccordionDiv">
+                      <div class="card-body bg-light">
+                        <p>Either by going to the <a href="https://github.com/theAwesomeFufuman/Tracitor" target="_blank">Github repository</a> for the project, or by sending an email to tracitor[dot]contact[at]gmail[dot]com</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card bg-dark">
+                    <div class="card-header" id="navAccordionHeadingFour" data-toggle="collapse" data-target="#navAccordionCollapseFour" aria-expanded="true" aria-controls="navAccordionCollapseFour">
+                      <h2 class="mb-0">
+                        <button class="btn btn-link" type="button">
+                          Acknowledgments
+                        </button>
+                      </h2>
+                    </div>
+                    <div id="navAccordionCollapseFour" class="collapse" aria-labelledby="navAccordionHeadingFour" data-parent="#navAccordionDiv">
+                      <div class="card-body bg-light">
+                        <p>I would like to thank the authors of the following technologies. Without them, this small project would not be possible.</p>
+                        <ul>
+                          <li>
+                            <a href="(https://www.tracery.io/" target="_blank">Tracery</a>
+                          </li>
+                          <li>
+                            <a href="https://jquery.com/" target="_blank">JQuery</a>
+                          </li>
+                          <li>
+                            <a href="https://github.com/lgarron/clipboard-polyfill" target="_blank">clipboard-polyfill</a>
+                          </li>
+                          <li>
+                            <a href="https://getbootstrap.com/" target="_blank">Bootstrap</a>
+                          </li>
+                          <li>
+                            <a href="https://beautifier.io/" target="_blank">beautifier.io</a>
+                          </li>
+                        </ul>
+                        <p>The background image is courtesy of <a href="https://commons.wikimedia.org/wiki/File:Lower_Manhattan_from_Jersey_City_November_2014_panorama_3.jpg" target="_blank">Wikimedia Commons</a></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             <nav class="navbar navbar-dark bg-dark">
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
+              <h2><a href="https://github.com/theAwesomeFufuman/Tracitor" target="_blank">Tracitor</a> - a <a href="https://www.tracery.io/" target="_blank">Tracery</a> editor</h2>
             </nav>
           </div>
         <div class="overlay">
             <div class="container features">
-                <div class="row">
-                    <div class="col">
-                        <h1 id="mainTitle">
-                            Report Generator
-                        </h1>
-                    </div>
-                </div>
-                <div class="row">
+                <div id="editorRow" class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12">
                         <div class="srcJsonObjectDiv">
                             <div class="accordion" id="accordionDiv">
-                                <div class="card">
+                                <div class="card bg-dark">
                                   <div class="card-header" id="jsonAccordionHeading" data-toggle="collapse" data-target="#jsonAccordionCollapse" aria-expanded="true" aria-controls="jsonAccordionCollapse">
                                     <h2 class="mb-0">
                                       <button class="btn btn-link" type="button" id="jsonAccordionBtn">
@@ -74,7 +142,7 @@
                                     </div>
                                   </div>
                                 </div>
-                                <div class="card">
+                                <div class="card bg-dark">
                                     <div class="card-header" id="simpleEditorAccordionHeading" data-toggle="collapse" data-target="#simpleEditorAccordionCollapse" aria-expanded="true" aria-controls="simpleEditorAccordionCollapse">
                                       <h2 class="mb-0">
                                         <button class="btn btn-link" type="button" id="simpleEditorAccordionBtn">
@@ -97,29 +165,31 @@
                                                 <textarea id="reportInputText" class="form-control originInput" rows="15"></textarea>
                                             </div>
                                         </div>
+                                        <button id="jsonCopyBtn" class="btn btn-light btn-block copyBtn" data-textarea="#srcJsonObject">📋 Copy story template(JSON) to the clipboard</button>
                                         <button id="importJsonBtn" class="btn btn-light btn-block" data-textarea="#srcJsonObject" data-toggle="collapse" data-target="#resultAccordionCollapse">📖 Generate story</button>
                                       </div>
                                     </div>
                                   </div>
-                                  <div class="card">
-                                    <div class="card-header" id="resultAccordionHeading" data-toggle="collapse" data-target="#resultAccordionCollapse" aria-expanded="true" aria-controls="resultAccordionCollapse">
-                                      <h2 class="mb-0">
-                                        <button class="btn btn-link" type="button" id="simpleEditorAccordionBtn">
-                                            📖 View generated story
-                                        </button>
-                                      </h2>
-                                    </div>
-                                    <div id="resultAccordionCollapse" class="collapse" aria-labelledby="resultAccordionHeading" data-parent="#accordionDiv">
-                                      <div class="card-body">
-                                        <div id="resultDiv">
-                                            <div class="form-group">
-                                                <textarea id="reportOutputText" class="form-control" rows="10"></textarea>
-                                            </div>
-                                        </div>
-                                        <button id="reportCopyBtn" class="btn btn-light btn-block copyBtn" data-textarea="#reportOutputText">📋 Copy the result to the clipboard</button>
+                                <div class="card bg-dark">
+                                  <div class="card-header" id="resultAccordionHeading" data-toggle="collapse" data-target="#resultAccordionCollapse" aria-expanded="true" aria-controls="resultAccordionCollapse">
+                                    <h2 class="mb-0">
+                                      <button class="btn btn-link" type="button" id="simpleEditorAccordionBtn">
+                                          📖 View generated story
+                                      </button>
+                                    </h2>
+                                  </div>
+                                  <div id="resultAccordionCollapse" class="collapse" aria-labelledby="resultAccordionHeading" data-parent="#accordionDiv">
+                                    <div class="card-body">
+                                      <div id="resultDiv">
+                                          <div class="form-group">
+                                              <textarea id="reportOutputText" class="form-control" rows="10"></textarea>
+                                          </div>
                                       </div>
+                                      <button id="importJsonBtn" class="btn btn-light btn-block" data-textarea="#srcJsonObject">📖 Reroll story</button>
+                                      <button id="reportCopyBtn" class="btn btn-light btn-block copyBtn" data-textarea="#reportOutputText">📋 Copy the result to the clipboard</button>
                                     </div>
                                   </div>
+                                </div>
                               </div>
                         </div>
                     </div>
