@@ -4,7 +4,7 @@ An editor for [Tracery](https://www.tracery.io/), made with a simple UI.
 ### Usage
 Download the repository and open index.html and you are good to go!
 ### Contact
-You can reach me at tracitor.contact@gmail.com
+You can reach me at tracitor[dot]contact[at]gmail[dot]com
 ### Acknowledgments
 I would like to thank the authors of the following technologies for allowing me to build this small project.
  - [beautifier.io](https://beautifier.io/)
