@@ -39,12 +39,22 @@ body {
     background-color: transparent;
 }
 
+textarea::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: white;
+}
+
 #inputDivs::-webkit-scrollbar {
     width: 12px;
     background-color: transparent;
 }
 
-#inputDivs::-webkit-scrollbar-thumb {
+textarea::-webkit-scrollbar {
+    width: 12px;
+    background-color: white;
+}
+
+#inputDivs::-webkit-scrollbar-thumb, textarea::-webkit-scrollbar-thumb {
     border-radius: 4px;
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
     box-shadow: inset 0 0 6px rgba(0,0,0,.3);
