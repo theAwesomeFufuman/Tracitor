@@ -4,7 +4,7 @@
 
 @media only screen and (max-width: 767px) {
     body {
-        background: url('../img/background.jpg') center center no-repeat fixed;
+        background: url('../img/background.png') center center no-repeat fixed;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         background-size: cover;
@@ -13,7 +13,7 @@
 }
 
 body {
-    background: url('../img/background.jpg') center center no-repeat fixed;
+    background: url('../img/background.png') center center no-repeat fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -32,6 +32,7 @@ body {
 #inputDivs {
     max-height: 24vh;
     overflow: auto;
+    margin-bottom: 1vh;
 }
 
 #inputDivs::-webkit-scrollbar-track {
@@ -86,7 +87,7 @@ textarea::-webkit-scrollbar {
     display:none;
 }
 
-#accordionBtn {
+.card-header>h2>button {
     text-decoration: none;
     color: black;
 }

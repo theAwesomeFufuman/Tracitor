@@ -32,6 +32,19 @@
         <script src="JS/Script.js"></script>
     </head>
     <body>
+        <div class="pos-f-t">
+            <div class="collapse" id="navbarToggleExternalContent">
+              <div class="bg-dark p-4">
+                <h4 class="text-white">Collapsed content</h4>
+                <span class="text-muted">Toggleable via the navbar brand.</span>
+              </div>
+            </div>
+            <nav class="navbar navbar-dark bg-dark">
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            </nav>
+          </div>
         <div class="overlay">
             <div class="container features">
                 <div class="row">
@@ -57,7 +70,7 @@
                                     <div class="card-body">
                                         <textarea id="srcJsonObject" class="form-control" rows="10"></textarea>
                                         <button id="jsonCopyBtn" class="btn btn-light btn-block copyBtn" data-textarea="#srcJsonObject">📋 Copy JSON to the clipboard</button>
-                                        <button id="importJsonBtn" class="btn btn-light btn-block" data-textarea="#srcJsonObject">📖 Generate story</button>
+                                        <button id="importJsonBtn" class="btn btn-light btn-block" data-textarea="#srcJsonObject" data-toggle="collapse" data-target="#resultAccordionCollapse">📖 Generate story</button>
                                     </div>
                                   </div>
                                 </div>
@@ -69,7 +82,7 @@
                                         </button>
                                       </h2>
                                     </div>
-                                    <div id="simpleEditorAccordionCollapse" class="collapse" aria-labelledby="simpleEditorAccordionHeading" data-parent="#accordionDiv">
+                                    <div id="simpleEditorAccordionCollapse" class="collapse show" aria-labelledby="simpleEditorAccordionHeading" data-parent="#accordionDiv">
                                       <div class="card-body">
                                         <button id="addCategoryBtn" class="btn btn-light btn-block">✔️ Add another category</button>
                                         <div id="inputDivs">
@@ -84,7 +97,7 @@
                                                 <textarea id="reportInputText" class="form-control originInput" rows="15"></textarea>
                                             </div>
                                         </div>
-                                        <button id="importJsonBtn" class="btn btn-light btn-block" data-textarea="#srcJsonObject">📖 Generate story</button>
+                                        <button id="importJsonBtn" class="btn btn-light btn-block" data-textarea="#srcJsonObject" data-toggle="collapse" data-target="#resultAccordionCollapse">📖 Generate story</button>
                                       </div>
                                     </div>
                                   </div>

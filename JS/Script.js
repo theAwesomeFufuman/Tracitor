@@ -2,6 +2,9 @@
 var numCategories = 1;
 
 $(document).ready(function () {
+    $('#srcJsonObject').attr('placeholder', '⌨️ Start writing your JSON here...\nThis editor uses "origin" as the start symbol for the tracery grammar.');
+    $('#reportInputText').attr('placeholder', '\u270D\uFE0F Start writing your story here...\nUse the rules that you have created by enclosing them with \'#\'s, e.g. \'I love #animals#\'.');
+
     $(document).on('keydown keyup change', '.categoryInput, .shuffleWordInput, .originInput', function () {
         $(this).parent().attr('id', 'activeDiv');
         inputFieldsToJson();
@@ -14,6 +17,7 @@ $(document).ready(function () {
         importJson(targetElement);
 
         generateTraceryOutput();
+        collapseThisAndShowResult();
     });
 
     $(document).on('click', '#addCategoryBtn', function () {
@@ -110,41 +114,44 @@ function copyToClipboard(valToCopy) {
 
 function importJson(objectToImport) {
 
-    try {
-        var jsonObject = JSON.parse($(objectToImport).val());
-    } catch (err) {
-        var redirectUsr = confirm("The JSON object that you provided is incorrectly formatted.\nDo you need help with formatting JSON correctly?")
-        if (redirectUsr) {
-            window.open('https://jsonlint.com/?json=' + $(objectToImport).val());
-        }
-    }
-
-    if (!redirectUsr) {
-        $('#inputDivs').children().each(function() {
-            $(this).remove();
-            numCategories -= 1;
-        });
-
-        var keys = Object.keys(jsonObject);
-        for (const key of keys) {
-            if (key == 'origin') {
-                $('#reportInputText').val(jsonObject[key].toString());
-            } else {
-                addCategory(true);
-                $('#activeDiv').children().each(function() {
-                    if ($(this).hasClass('categoryInput')) {
-                        $(this).val(key);
-                    }
-
-                    if ($(this).hasClass('shuffleWordInput')) {
-                        $(this).val(jsonObject[key].toString());
-                    }
-                });
+    if ($(objectToImport).val() != "") {
+        
+        try {
+            var jsonObject = JSON.parse($(objectToImport).val());
+        } catch (err) {
+            var redirectUsr = confirm("The JSON object that you provided is incorrectly formatted.\nDo you need help with formatting JSON correctly?")
+            if (redirectUsr) {
+                window.open('https://jsonlint.com/?json=' + $(objectToImport).val());
             }
-            symbols = jsonObject;
-
-            $('#activeDiv').attr('id', '');
         }
+
+        if (!redirectUsr) {
+            $('#inputDivs').children().each(function() {
+                $(this).remove();
+                numCategories -= 1;
+            });
+
+            var keys = Object.keys(jsonObject);
+            for (const key of keys) {
+                if (key == 'origin') {
+                    $('#reportInputText').val(jsonObject[key].toString());
+                } else {
+                    addCategory(true);
+                    $('#activeDiv').children().each(function() {
+                        if ($(this).hasClass('categoryInput')) {
+                            $(this).val(key);
+                        }
+
+                        if ($(this).hasClass('shuffleWordInput')) {
+                            $(this).val(jsonObject[key].toString());
+                        }
+                    });
+                }
+                symbols = jsonObject;
+
+                $('#activeDiv').attr('id', '');
+            }
+        }   
     }
 }
 
@@ -160,4 +167,9 @@ function removeObsoleteJsonObjects(objectKeyToCheck, objectArrayToCheck) {
             delete symbols[key];
         }
     }
+}
+
+function collapseThisAndShowResult() {
+    //$('#jsonAccordionCollapse, #simpleEditorAccordionCollapse').collapse('toggle');
+    //$('#resultAccordionCollapse').collapse('toggle');
 }
