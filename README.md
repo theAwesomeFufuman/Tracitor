@@ -7,11 +7,11 @@ Download the repository and open index.html and you are good to go!
 You can reach me at tracitor[dot]contact[at]gmail[dot]com
 ### Acknowledgments
 I would like to thank the authors of the following technologies. Without them, this small project would not be possible.
- - [beautifier.io](https://beautifier.io/)
- - [Bootstrap](https://getbootstrap.com/)
- - [clipboard-polyfill](https://github.com/lgarron/clipboard-polyfill)
- - [JQuery](https://jquery.com/)
  - [Tracery](https://www.tracery.io/)
+ - [JQuery](https://jquery.com/)
+ - [clipboard-polyfill](https://github.com/lgarron/clipboard-polyfill)
+ - [Bootstrap](https://getbootstrap.com/)
+ - [beautifier.io](https://beautifier.io/)
  
 ### Background image
 [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Lower_Manhattan_from_Jersey_City_November_2014_panorama_3.jpg)
