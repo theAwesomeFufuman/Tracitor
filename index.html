@@ -136,9 +136,10 @@
                                   </div>
                                   <div id="jsonAccordionCollapse" class="collapse" aria-labelledby="jsonAccordionHeading" data-parent="#accordionDiv">
                                     <div class="card-body">
-                                        <textarea id="srcJsonObject" class="form-control" rows="10"></textarea>
-                                        <button id="jsonCopyBtn" class="btn btn-light btn-block copyBtn" data-textarea="#srcJsonObject">📋 Copy JSON to the clipboard</button>
-                                        <button id="importJsonBtn" class="btn btn-light btn-block" data-textarea="#srcJsonObject" data-toggle="collapse" data-target="#resultAccordionCollapse">📖 Generate story</button>
+                                      <!-- Placeholder for srcJsonObject is set in Script.js -->
+                                      <textarea id="srcJsonObject" class="form-control" rows="10"></textarea>
+                                      <button id="jsonCopyBtn" class="btn btn-light btn-block copyBtn" data-textarea="#srcJsonObject">📋 Copy JSON to the clipboard</button>
+                                      <button id="importJsonBtn" class="btn btn-light btn-block" data-textarea="#srcJsonObject">📖 Generate story</button>
                                     </div>
                                   </div>
                                 </div>
@@ -155,14 +156,15 @@
                                         <button id="addCategoryBtn" class="btn btn-light btn-block">✔️ Add another category</button>
                                         <div id="inputDivs">
                                             <div class="form-group categoryDivs">
-                                                <input class="form-control categoryInput" placeholder="🏷️ Give this category a title, e.g. 'animals'" />
+                                                <input class="form-control categoryInput" placeholder="🏷️ Give this category a title, e.g. 'animal'" />
                                                 <input class="form-control shuffleWordInput" placeholder="❓ Words to shuffle, e.g. 'deer, fox, rabbit'" />
                                                 <button class="btn btn-light btn-block">❌ Remove this category</button>
                                             </div>
                                         </div>
                                         <div id="previewDiv">
                                             <div class="form-group">
-                                                <textarea id="reportInputText" class="form-control originInput" rows="15"></textarea>
+                                              <!-- Placeholder for reportInputText is set in Script.js -->
+                                              <textarea id="reportInputText" class="form-control originInput" rows="15"></textarea>
                                             </div>
                                         </div>
                                         <button id="jsonCopyBtn" class="btn btn-light btn-block copyBtn" data-textarea="#srcJsonObject">📋 Copy story template(JSON) to the clipboard</button>

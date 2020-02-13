@@ -1,97 +1,106 @@
 ﻿var symbols = {};
-var numCategories = 1;
+var numSymbols = 1;
+var importedJsonIsValid;
 
 $(document).ready(function () {
     $('#srcJsonObject').attr('placeholder', '⌨️ Start writing your JSON here...\nThis editor uses "origin" as the start symbol for the tracery grammar.');
-    $('#reportInputText').attr('placeholder', '\u270D\uFE0F Start writing your story here...\nUse the rules that you have created above by enclosing them with \'#\'s, e.g. \'I love #animals#\'.');
+    $('#reportInputText').attr('placeholder', '\u270D\uFE0F Start writing your story here...\nUse the rules that you have created above by enclosing them with \'#\'s, e.g. \'My favorite animal is #animal#\'.');
 
     $(document).on('keydown keyup change', '.categoryInput, .shuffleWordInput, .originInput', function () {
         $(this).parent().attr('id', 'activeDiv');
-        inputFieldsToJson();
+        editorTxtAreaToSymbolsObject();
+        prettyPrintSymbolsObject(symbols, '#srcJsonObject');
     });
 
     $(document).on('click', '#createReportBtn, #importJsonBtn', function () {
         var targetElement = $(this).attr('data-textarea');
 
-        $(targetElement).val(js_beautify($(targetElement).val()));
-        importJson(targetElement);
+        importSymbolsFromJsonEditor(targetElement);
+        prettyPrintSymbolsObject(symbols, targetElement);
 
-        generateTraceryOutput();
-        collapseThisAndShowResult();
+        if (importedJsonIsValid) {
+            $('#reportOutputText').val(generateTraceryOutput());
+            $('#resultAccordionHeading').trigger('click');
+        }
     });
 
     $(document).on('click', '#addCategoryBtn', function () {
-        addCategory(false);
+        addSymbolInput(false);
     });
 
+    //Remove symbol button
     $(document).on('click', '.categoryDivs > button', function () {
         $(this).parent().attr('id', 'activeDiv');
-        removeCategory();
+        removeSymbol();
     });
 
     $(document).on('click', '.copyBtn', function () {
         var targetElement = $(this).attr('data-textarea');
 
         if (targetElement == '#srcJsonObject') {
-            $(targetElement).val(js_beautify($(targetElement).val()));
+            importSymbolsFromJsonEditor(targetElement);
+            prettyPrintSymbolsObject(symbols, targetElement);
         }
 
         copyToClipboard(targetElement);
     });
 });
 
-function inputFieldsToJson(){
-        var tempObjectKey;
-        var tempArray;
+function editorTxtAreaToSymbolsObject(){
+        var symbolObjectKey;
+        var symbolValueArray;
     $('#activeDiv').children().each(function() {
 
         if ($(this).hasClass('categoryInput')) {
-            tempObjectKey = $(this).val().trim();
+            symbolObjectKey = $(this).val().trim();
         }
 
         if ($(this).hasClass('shuffleWordInput')) {
-            tempArray = $(this).val().split(',');
+            symbolValueArray = $(this).val().split(',');
         }
 
         if ($(this).hasClass('originInput')) {
-            tempObjectKey = "origin";
-            tempArray = $(this).val();
+            symbolObjectKey = "origin";
+            symbolValueArray = $(this).val();
         }
     });
 
-    if (tempArray != "") {
-        for (var i = 0; i < tempArray.length; i++) {
-            tempArray[i] = tempArray[i].trim();
+    if (symbolValueArray != "" && symbolValueArray != undefined) {
+        for (var i = 0; i < symbolValueArray.length; i++) {
+            symbolValueArray[i] = symbolValueArray[i].trim();
         }
 
-        symbols[tempObjectKey] = tempArray;
+        symbols[symbolObjectKey] = symbolValueArray;
     }
 
-    if (numCategoriesInJsonObject() > numCategories) {
-        removeObsoleteJsonObjects(tempObjectKey, tempArray);
+    if (numCategoriesInJsonObject() > numSymbols) {
+        removeObsoleteJsonObjects(symbolObjectKey, symbolValueArray);
     }
-    $('#srcJsonObject').val(js_beautify(JSON.stringify(symbols)));
     $('#activeDiv').attr('id', '');
+}
+
+function prettyPrintSymbolsObject(objectToPrint, elementToPrintTo) {
+    $(elementToPrintTo).val(js_beautify(JSON.stringify(objectToPrint)));
 }
 
 function generateTraceryOutput() {
     var grammar = tracery.createGrammar(symbols);
-    var results = grammar.flatten($('#reportInputText').val());
-    $('#reportOutputText').val(results);
+    var traceryOutput = grammar.flatten(symbols["origin"].toString());
+    return traceryOutput;
 }
 
-function addCategory(setActive) {
-    var activeClassID = setActive ? "id=\"activeDiv\"" : "";
-    numCategories += 1;
-    $('#inputDivs').append('<div class=\"form-group categoryDivs\" ' + activeClassID +  '><input class=\"form-control categoryInput\" placeholder=\"\uD83C\uDFF7\uFE0F Give this category a title, e.g. \'animals\'\" \/><input class=\"form-control shuffleWordInput\" placeholder=\"\u2753 Words to shuffle, e.g. \'deer, fox, rabbit\'\" \/><button class=\"btn btn-light btn-block\">\u274C Remove this category<\/button><\/div>');
+function addSymbolInput(setActive) {
+    var activeClassName = setActive ? "id=\"activeDiv\"" : "";
+    numSymbols += 1;
+    $('#inputDivs').append('<div class=\"form-group categoryDivs\" ' + activeClassName +  '><input class=\"form-control categoryInput\" placeholder=\"\uD83C\uDFF7\uFE0F Give this category a title, e.g. \'animals\'\" \/><input class=\"form-control shuffleWordInput\" placeholder=\"\u2753 Words to shuffle, e.g. \'deer, fox, rabbit\'\" \/><button class=\"btn btn-light btn-block\">\u274C Remove this category<\/button><\/div>');
 
-    if (numCategories > 1) {
+    if (numSymbols > 1) {
         $('.categoryDivs > button').show();   
     }
 }
 
-function removeCategory() {
-    numCategories -= 1;
+function removeSymbol() {
+    numSymbols -= 1;
     $('#activeDiv').children().each(function() {
         if ($(this).hasClass('categoryInput')) {
             delete symbols[$(this).val()];
@@ -100,10 +109,10 @@ function removeCategory() {
 
     $('#activeDiv').remove();
 
-    if (numCategories == 1) {
+    if (numSymbols == 1) {
         $('.categoryDivs > button').hide();
     }
-    $('#srcJsonObject').val(js_beautify(JSON.stringify(symbols)));
+    prettyPrintSymbolsObject(symbols, '#srcJsonObject');
 }
 
 function copyToClipboard(valToCopy) {
@@ -112,52 +121,51 @@ function copyToClipboard(valToCopy) {
     clipboard.write(dt);
 }
 
-function importJson(objectToImport) {
+function importSymbolsFromJsonEditor(jsonToImport) {
 
-    if ($(objectToImport).val() != "") {
+    if ($(jsonToImport).val() != "") {
         
         try {
-            var jsonObject = JSON.parse($(objectToImport).val());
+            var importedJsonObject = JSON.parse($(jsonToImport).val());
+            importedJsonIsValid = true;
         } catch (err) {
+            importedJsonIsValid = false;
             var redirectUsr = confirm("The JSON object that you provided is incorrectly formatted.\nDo you need help with formatting JSON correctly?")
             if (redirectUsr) {
-                window.open('https://jsonlint.com/?json=' + $(objectToImport).val());
+                window.open('https://jsonlint.com/?json=' + $(jsonToImport).val());
             }
         }
 
-        if (!redirectUsr) {
-            $('#inputDivs').children().each(function() {
-                $(this).remove();
-                numCategories -= 1;
-            });
+        $('#inputDivs').children().each(function() {
+            $(this).remove();
+            numSymbols -= 1;
+        });
 
-            var keys = Object.keys(jsonObject);
-            for (const key of keys) {
-                if (key == 'origin') {
-                    $('#reportInputText').val(jsonObject[key].toString());
-                } else {
-                    addCategory(true);
-                    $('#activeDiv').children().each(function() {
-                        if ($(this).hasClass('categoryInput')) {
-                            $(this).val(key);
-                        }
+        var keys = Object.keys(importedJsonObject);
+        for (const key of keys) {
+            if (key == 'origin') {
+                $('#reportInputText').val(importedJsonObject[key].toString());
+            } else {
+                addSymbolInput(true);
+                $('#activeDiv').children().each(function() {
+                    if ($(this).hasClass('categoryInput')) {
+                        $(this).val(key);
+                    }
 
-                        if ($(this).hasClass('shuffleWordInput')) {
-                            $(this).val(jsonObject[key].toString());
-                        }
-                    });
-                }
-                symbols = jsonObject;
-
-                $('#activeDiv').attr('id', '');
+                    if ($(this).hasClass('shuffleWordInput')) {
+                        $(this).val(importedJsonObject[key].toString());
+                    }
+                });
             }
-        }   
+            symbols = importedJsonObject;
+
+            $('#activeDiv').attr('id', '');
+        }
     }
 }
 
 function numCategoriesInJsonObject() {
-    var keys = Object.keys(symbols);
-    return keys.length;
+    return Object.keys(symbols).length;
 }
 
 function removeObsoleteJsonObjects(objectKeyToCheck, objectArrayToCheck) {
@@ -167,9 +175,4 @@ function removeObsoleteJsonObjects(objectKeyToCheck, objectArrayToCheck) {
             delete symbols[key];
         }
     }
-}
-
-function collapseThisAndShowResult() {
-    //$('#jsonAccordionCollapse, #simpleEditorAccordionCollapse').collapse('toggle');
-    //$('#resultAccordionCollapse').collapse('toggle');
 }
