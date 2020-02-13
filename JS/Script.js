@@ -3,33 +3,38 @@ var numSymbols = 1;
 var importedJsonIsValid;
 
 $(document).ready(function () {
-    $('#srcJsonObject').attr('placeholder', '⌨️ Start writing your JSON here...\nThis editor uses "origin" as the start symbol for the tracery grammar.');
-    $('#reportInputText').attr('placeholder', '\u270D\uFE0F Start writing your story here...\nUse the rules that you have created above by enclosing them with \'#\'s, e.g. \'My favorite animal is #animal#\'.');
+    $('#jsonEditorTxtArea').attr('placeholder', '⌨️ Start writing your JSON here...\nThis editor uses "origin" as the start symbol for the tracery grammar.');
+    $('#simpleEditorTxtArea').attr('placeholder', '\u270D\uFE0F Start writing your story here...\nUse the symbols that you have created above by enclosing them with \'#\'s, e.g. \'My favorite animal is #animal#\'.');
 
-    $(document).on('keydown keyup change', '.categoryInput, .shuffleWordInput, .originInput', function () {
+    $(document).on('keydown keyup change', '.symbolInput, .rulesetInput, .originInput', function () {
         $(this).parent().attr('id', 'activeDiv');
         editorTxtAreaToSymbolsObject();
-        prettyPrintSymbolsObject(symbols, '#srcJsonObject');
+        prettyPrintSymbolsObject(symbols, '#jsonEditorTxtArea');
     });
 
-    $(document).on('click', '#createReportBtn, #importJsonBtn', function () {
+    $(document).on('click', '.generateStoryBtn', function () {
         var targetElement = $(this).attr('data-textarea');
 
-        importSymbolsFromJsonEditor(targetElement);
-        prettyPrintSymbolsObject(symbols, targetElement);
+        if (!($(targetElement).val() == "")) {
+            importSymbolsFromJsonEditor(targetElement);
+            prettyPrintSymbolsObject(symbols, targetElement);
 
-        if (importedJsonIsValid) {
-            $('#reportOutputText').val(generateTraceryOutput());
-            $('#resultAccordionHeading').trigger('click');
+            if (importedJsonIsValid) {
+                $('#resultTxtArea').val(generateTraceryOutput());
+
+                if ($('#jsonEditorCollapse').hasClass('show')) {
+                    $('#resultHeading').trigger('click');   
+                }
+            }
         }
     });
 
-    $(document).on('click', '#addCategoryBtn', function () {
+    $(document).on('click', '#addSymbolInputBtn', function () {
         addSymbolInput(false);
     });
 
     //Remove symbol button
-    $(document).on('click', '.categoryDivs > button', function () {
+    $(document).on('click', '.symbolsInputFormGroupDiv > button', function () {
         $(this).parent().attr('id', 'activeDiv');
         removeSymbol();
     });
@@ -37,7 +42,7 @@ $(document).ready(function () {
     $(document).on('click', '.copyBtn', function () {
         var targetElement = $(this).attr('data-textarea');
 
-        if (targetElement == '#srcJsonObject') {
+        if (targetElement == '#jsonEditorTxtArea') {
             importSymbolsFromJsonEditor(targetElement);
             prettyPrintSymbolsObject(symbols, targetElement);
         }
@@ -51,11 +56,11 @@ function editorTxtAreaToSymbolsObject(){
         var symbolValueArray;
     $('#activeDiv').children().each(function() {
 
-        if ($(this).hasClass('categoryInput')) {
+        if ($(this).hasClass('symbolInput')) {
             symbolObjectKey = $(this).val().trim();
         }
 
-        if ($(this).hasClass('shuffleWordInput')) {
+        if ($(this).hasClass('rulesetInput')) {
             symbolValueArray = $(this).val().split(',');
         }
 
@@ -92,17 +97,17 @@ function generateTraceryOutput() {
 function addSymbolInput(setActive) {
     var activeClassName = setActive ? "id=\"activeDiv\"" : "";
     numSymbols += 1;
-    $('#inputDivs').append('<div class=\"form-group categoryDivs\" ' + activeClassName +  '><input class=\"form-control categoryInput\" placeholder=\"\uD83C\uDFF7\uFE0F Give this category a title, e.g. \'animals\'\" \/><input class=\"form-control shuffleWordInput\" placeholder=\"\u2753 Words to shuffle, e.g. \'deer, fox, rabbit\'\" \/><button class=\"btn btn-light btn-block\">\u274C Remove this category<\/button><\/div>');
+    $('#symbolsInputParentDiv').append('<div class=\"form-group symbolsInputFormGroupDiv\" ' + activeClassName +  '><input class=\"form-control symbolInput\" placeholder=\"\uD83C\uDFF7\uFE0F Give this symbol a title, e.g. \'animal\'.\" \/><input class=\"form-control rulesetInput\" placeholder=\"\u2753 Enter the word(s) or sentence(s) to randomize in this symbol, separated by commas. E.g. \'deer, fox, rabbit\'.\"><button class=\"btn btn-light btn-block\">\u274C Remove this symbol<\/button><\/div>');
 
     if (numSymbols > 1) {
-        $('.categoryDivs > button').show();   
+        $('.symbolsInputFormGroupDiv > button').show();   
     }
 }
 
 function removeSymbol() {
     numSymbols -= 1;
     $('#activeDiv').children().each(function() {
-        if ($(this).hasClass('categoryInput')) {
+        if ($(this).hasClass('symbolInput')) {
             delete symbols[$(this).val()];
         }
     });
@@ -110,9 +115,9 @@ function removeSymbol() {
     $('#activeDiv').remove();
 
     if (numSymbols == 1) {
-        $('.categoryDivs > button').hide();
+        $('.symbolsInputFormGroupDiv > button').hide();
     }
-    prettyPrintSymbolsObject(symbols, '#srcJsonObject');
+    prettyPrintSymbolsObject(symbols, '#jsonEditorTxtArea');
 }
 
 function copyToClipboard(valToCopy) {
@@ -136,7 +141,7 @@ function importSymbolsFromJsonEditor(jsonToImport) {
             }
         }
 
-        $('#inputDivs').children().each(function() {
+        $('#symbolsInputParentDiv').children().each(function() {
             $(this).remove();
             numSymbols -= 1;
         });
@@ -144,15 +149,15 @@ function importSymbolsFromJsonEditor(jsonToImport) {
         var keys = Object.keys(importedJsonObject);
         for (const key of keys) {
             if (key == 'origin') {
-                $('#reportInputText').val(importedJsonObject[key].toString());
+                $('#simpleEditorTxtArea').val(importedJsonObject[key].toString());
             } else {
                 addSymbolInput(true);
                 $('#activeDiv').children().each(function() {
-                    if ($(this).hasClass('categoryInput')) {
+                    if ($(this).hasClass('symbolInput')) {
                         $(this).val(key);
                     }
 
-                    if ($(this).hasClass('shuffleWordInput')) {
+                    if ($(this).hasClass('rulesetInput')) {
                         $(this).val(importedJsonObject[key].toString());
                     }
                 });

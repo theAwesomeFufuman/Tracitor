@@ -1,4 +1,4 @@
-* {
+*, .navbar>h2>a, .bg-light>p>a {
     color: darkorange;
 }
 
@@ -20,38 +20,26 @@ body {
     -o-background-size: cover;
 }
 
-.navbar>h2>a {
-    color: darkorange;
-}
-
-.bg-light>p {
+.bg-light>p, .bg-light>ul>li>a {
     margin: 0;
     color: black;
 }
 
-.bg-light>p>a {
-    color: darkorange;
-}
-
-.bg-light>ul>li>a {
-    color: black;
-}
-
-#editorRow {
+#accordionRow {
     margin-top: 5vh;
 }
 
-#jsonCopyBtn {
+.symbolsJsonCopyBtn {
     margin-top: 1vh;
 }
 
-#inputDivs {
+#symbolsInputParentDiv {
     max-height: 24vh;
     overflow: auto;
     margin-bottom: 1vh;
 }
 
-#inputDivs::-webkit-scrollbar-track {
+#symbolsInputParentDiv::-webkit-scrollbar-track {
     border-radius: 10px;
     background-color: transparent;
 }
@@ -61,7 +49,7 @@ textarea::-webkit-scrollbar-track {
     background-color: white;
 }
 
-#inputDivs::-webkit-scrollbar {
+#symbolsInputParentDiv::-webkit-scrollbar {
     width: 12px;
     background-color: transparent;
 }
@@ -71,27 +59,27 @@ textarea::-webkit-scrollbar {
     background-color: white;
 }
 
-#inputDivs::-webkit-scrollbar-thumb, textarea::-webkit-scrollbar-thumb {
+#symbolsInputParentDiv::-webkit-scrollbar-thumb, textarea::-webkit-scrollbar-thumb {
     border-radius: 4px;
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
     box-shadow: inset 0 0 6px rgba(0,0,0,.3);
     background-color: darkorange;
 }
 
-#addCategoryBtn {
+#addSymbolInputBtn {
     margin:  0 0 1vh 0;
 }
 
-.categoryDivs:last-child, .categoryDivs:last-child>button {
+.symbolsInputFormGroupDiv:last-child, .symbolsInputFormGroupDiv:last-child>button {
     margin-bottom: 0;
 }
 
-.categoryDivs > input, .categoryDivs > button {
+.symbolsInputFormGroupDiv > input, .symbolsInputFormGroupDiv > button {
     margin: 0 0 0.5vh 0;
 }
 
-/*Will change dynamically in Script.js functions addCategory() and removeCategory()*/
-.categoryDivs > button {
+/*Will change dynamically in Script.js functions addsymbol() and removesymbol()*/
+.symbolsInputFormGroupDiv > button {
     display:none;
 }
 
