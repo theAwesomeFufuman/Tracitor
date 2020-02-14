@@ -2,7 +2,9 @@
 ### What is this?
 An editor for [Tracery](https://www.tracery.io/), made with a simple UI.
 ### Installation
-Download the repository and open index.html and you are good to go!
+You can use this application by doing one of the following:
+- Visit the [web version](https://theawesomefufuman.github.io/Tracitor/) of the project
+- Download the repository and open index.html
 ### Usage
 #### JSON editor
 The JSON editor works the same way as [Tracery](https://www.tracery.io/) does. Fill in your Tracery grammar JSON object and click on '📖 Generate story'. The start symbol for the Tracery grammar is always 'origin', so make sure that you have a symbol called 'origin' that refers to the rest of your symbols for the application to work. The button titled '📋 Copy JSON to the clipboard' copies the JSON object to the clipboard for use and/or storage outside of this application.
