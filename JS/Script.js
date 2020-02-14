@@ -141,6 +141,10 @@ function importSymbolsFromJsonEditor(jsonToImport) {
             numSymbols -= 1;
         });
 
+        if (numSymbols == 0 && !(importedJsonIsValid)) {
+            addSymbolInput(false);
+        }
+
         var keys = Object.keys(importedJsonObject);
         for (const key of keys) {
             if (key == 'origin') {
@@ -160,10 +164,6 @@ function importSymbolsFromJsonEditor(jsonToImport) {
             symbols = importedJsonObject;
 
             $('#activeDiv').attr('id', '');
-        }
-
-        if (numSymbols == 0) {
-            addSymbolInput(false);
         }
     }
 }
