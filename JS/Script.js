@@ -15,8 +15,9 @@ $(document).ready(function () {
     $(document).on('click', '.generateStoryBtn', function () {
         var targetElement = $(this).attr('data-textarea');
 
+        importSymbolsFromJsonEditor(targetElement);
+        
         if (importedJsonIsValid && symbols["origin"] != undefined) {
-            importSymbolsFromJsonEditor(targetElement);
             prettyPrintSymbolsObject(symbols, targetElement);
             $('#resultTxtArea').val(generateTraceryOutput());
         }
@@ -127,6 +128,7 @@ function importSymbolsFromJsonEditor(jsonToImport) {
             var importedJsonObject = JSON.parse($(jsonToImport).val());
             importedJsonIsValid = true;
         } catch (err) {
+            $('#resultTxtArea').val('❌ Your JSON is incorrectly formatted, please fix the JSON and try again ❌');
             importedJsonIsValid = false;
             var redirectUsr = confirm("The JSON object that you provided is incorrectly formatted.\nDo you need help with formatting JSON correctly?")
             if (redirectUsr) {
