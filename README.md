@@ -1,4 +1,4 @@
-# Tracitor
+# Tracitor - a [Tracery](https://www.tracery.io/) editor
 ### What is this?
 An editor for [Tracery](https://www.tracery.io/), made with a simple UI.
 ### Installation
