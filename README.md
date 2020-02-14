@@ -5,17 +5,15 @@ An editor for [Tracery](https://www.tracery.io/), made with a simple UI.
 Download the repository and open index.html and you are good to go!
 ### Usage
 #### JSON editor
-The JSON editor works the same way as [Tracery](https://www.tracery.io/) does. Fill in your Tracery grammar JSON object and click on '📖 Generate story'. The start symbol for the Tracery grammar is always 'origin', so make sure that you have a symbol called 'origin' that refers to the rest of your symbols for the application to work. The button titled '📋 Copy JSON to the clipboard' copies the JSON object to your clipboard for use and/or storage outside of this application.
+The JSON editor works the same way as [Tracery](https://www.tracery.io/) does. Fill in your Tracery grammar JSON object and click on '📖 Generate story'. The start symbol for the Tracery grammar is always 'origin', so make sure that you have a symbol called 'origin' that refers to the rest of your symbols for the application to work. The button titled '📋 Copy JSON to the clipboard' copies the JSON object to the clipboard for use and/or storage outside of this application.
 
 #### Simple editor
-The simple editor works in a similar way to the JSON editor. You create a symbol by giving it a title in the first field and a ruleset in the second field(separated by commas). To add another symbol, click the button titled '✔️ Add another symbol'. Once your symbols are all set up, you can put it all together in the big textarea below the symbol input fields by refering to the symbols by their name surrounded with '#'s, e.g. #animal# for a symbol with the title 'animal'.
-Finally you click '📖 Generate story' to see the result.
-The button titled '📋 Copy JSON to the clipboard' copies the template for you current story to your clipboard for use and/or storage outside of this application. To import a saved story, paste the information in the JSON editor and click on '📖 Generate story'.
+The simple editor works in a similar way to the JSON editor. You create a symbol by giving it a title in the first field and a rules in the second field(separated by commas). To add another symbol, click the button titled '✔️ Add another symbol'. Once your symbols are all set up, you can put it all together in the big textarea below the symbol input fields by refering to the symbols by their name(s) surrounded with '#'s, e.g. #animal# for a symbol with the title 'animal'. Finally you click '📖 Generate story' to see the result. The button titled '📋 Copy JSON to the clipboard' copies the template for your current story to the clipboard for use and/or storage outside of this application. To import a saved story, paste the information in the JSON editor and click on '📖 Generate story'.
 
 #### View generated story
 Here you will see the result of the generated story that you have created. Click on '📋 Copy the story to the clipboard' to copy the story in the textarea. Click on '📖 Reroll story' to generate a new random story from the symbols that you have created in either the JSON editor or in the Simple Editor.
 
-For a more extensive explanation on how to use Tracery within this editor, visit the [Tracery Github page](https://github.com/galaxykate/tracery/).
+For a more extensive explanation on how to use Tracery within this editor, either visit the [Tracery Github page](https://github.com/galaxykate/tracery/) or this [Tracery turorial](http://www.crystalcodepalace.com/traceryTut.html).
 
 ### Contact
 You can reach me at tracitor[dot]contact[at]gmail[dot]com
