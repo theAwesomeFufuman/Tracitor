@@ -9,6 +9,7 @@ You can reach me at tracitor[dot]contact[at]gmail[dot]com
 I would like to thank the authors of the following technologies. Without them, this small project would not be possible.
  - [Tracery](https://www.tracery.io/)
  - [JQuery](https://jquery.com/)
+ - [jsonlint.com](https://jsonlint.com/)
  - [clipboard-polyfill](https://github.com/lgarron/clipboard-polyfill)
  - [Bootstrap](https://getbootstrap.com/)
  - [beautifier.io](https://beautifier.io/)
