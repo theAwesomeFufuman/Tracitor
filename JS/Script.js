@@ -161,6 +161,10 @@ function importSymbolsFromJsonEditor(jsonToImport) {
 
             $('#activeDiv').attr('id', '');
         }
+
+        if (numSymbols == 0) {
+            addSymbolInput(false);
+        }
     }
 }
 
