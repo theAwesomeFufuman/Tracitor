@@ -15,17 +15,10 @@ $(document).ready(function () {
     $(document).on('click', '.generateStoryBtn', function () {
         var targetElement = $(this).attr('data-textarea');
 
-        if (!($(targetElement).val() == "")) {
+        if (importedJsonIsValid && symbols["origin"] != undefined) {
             importSymbolsFromJsonEditor(targetElement);
             prettyPrintSymbolsObject(symbols, targetElement);
-
-            if (importedJsonIsValid) {
-                $('#resultTxtArea').val(generateTraceryOutput());
-
-                if ($('#jsonEditorCollapse').hasClass('show')) {
-                    $('#resultHeading').trigger('click');   
-                }
-            }
+            $('#resultTxtArea').val(generateTraceryOutput());
         }
     });
 
@@ -33,7 +26,7 @@ $(document).ready(function () {
         addSymbolInput(false);
     });
 
-    //Remove symbol button
+    //"❌ Remove this symbol"-button
     $(document).on('click', '.symbolsInputFormGroupDiv > button', function () {
         $(this).parent().attr('id', 'activeDiv');
         removeSymbol();
