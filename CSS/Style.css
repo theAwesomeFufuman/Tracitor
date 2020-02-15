@@ -40,7 +40,7 @@ body {
     margin-bottom: 1vh;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 990px) {
     #symbolsInputParentDiv {
         height: auto;
     }
