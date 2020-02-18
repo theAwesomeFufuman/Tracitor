@@ -94,7 +94,7 @@ function addSymbolInput(setActive) {
 
     if (numSymbols > 1) {
         $('.symbolsInputFormGroupDiv > button').show();
-        $('#sortableInstruction').addClass('d-none d-md-block');
+        $('#sortableInstruction').addClass('d-none d-lg-block');
         $('#sortableInstruction').show();
     }
 
