@@ -94,10 +94,13 @@ function addSymbolInput(setActive) {
 
     if (numSymbols > 1) {
         $('.symbolsInputFormGroupDiv > button').show();
+        $('#sortableInstruction').addClass('d-none d-md-block');
         $('#sortableInstruction').show();
     }
 
-    Sortable.create(symbolsInputParentDiv, {animation: 600});
+    if (window.innerWidth > 767) {
+        Sortable.create(symbolsInputParentDiv, {animation: 600});   
+    }
 }
 
 function removeSymbol() {
@@ -114,6 +117,7 @@ function removeSymbol() {
         $('.symbolsInputFormGroupDiv > button').hide();
         $('#sortableInstruction').hide();
     }
+
     prettyPrintSymbolsObject(symbols, '#jsonEditorTxtArea');
 }
 
