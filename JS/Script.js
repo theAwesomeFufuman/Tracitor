@@ -27,8 +27,7 @@ $(document).ready(function () {
         addSymbolInput(false);
     });
 
-    //"❌ Remove this symbol"-button
-    $(document).on('click', '.symbolsInputFormGroupDiv > button', function () {
+    $(document).on('click', '.removeSymbolBtn', function () {
         $(this).parent().attr('id', 'activeDiv');
         removeSymbol();
     });
@@ -91,11 +90,14 @@ function generateTraceryOutput() {
 function addSymbolInput(setActive) {
     var activeClassName = setActive ? "id=\"activeDiv\"" : "";
     numSymbols += 1;
-    $('#symbolsInputParentDiv').append('<div class=\"form-group symbolsInputFormGroupDiv\" ' + activeClassName +  '><textarea class=\"form-control symbolInput\" placeholder=\"\uD83C\uDFF7\uFE0F Give this symbol a title, e.g. \'animal\'.\" rows=\"1\"><\/textarea><textarea class=\"form-control rulesetInput\" placeholder=\"\u2753 Enter the word(s) or sentence(s) to randomize in this symbol, separated by commas. E.g. \'deer, fox, rabbit\'.\" rows=\"1\"><\/textarea><button class=\"btn btn-light btn-block\">\u274C Remove this symbol<\/button><\/div>');
+    $('#symbolsInputParentDiv').append('<div class=\"form-group symbolsInputFormGroupDiv\" ' + activeClassName +  '><textarea class=\"form-control symbolInput\" placeholder=\"\uD83C\uDFF7\uFE0F Give this symbol a title, e.g. \'animal\'.\" rows=\"1\"><\/textarea><textarea class=\"form-control rulesetInput\" placeholder=\"\u2753 Enter the word(s) or sentence(s) to randomize in this symbol, separated by commas. E.g. \'deer, fox, rabbit\'.\" rows=\"1\"><\/textarea><button class=\"btn btn-light btn-block removeSymbolBtn\">\u274C Remove this symbol<\/button><\/div>');
 
     if (numSymbols > 1) {
-        $('.symbolsInputFormGroupDiv > button').show();   
+        $('.symbolsInputFormGroupDiv > button').show();
+        $('#sortableInstruction').show();
     }
+
+    Sortable.create(symbolsInputParentDiv, {animation: 600});
 }
 
 function removeSymbol() {
@@ -110,6 +112,7 @@ function removeSymbol() {
 
     if (numSymbols == 1) {
         $('.symbolsInputFormGroupDiv > button').hide();
+        $('#sortableInstruction').hide();
     }
     prettyPrintSymbolsObject(symbols, '#jsonEditorTxtArea');
 }

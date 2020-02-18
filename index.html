@@ -25,6 +25,9 @@
         <!-- beautifier.io [JS] CDN -->
         <script src="https://cdn.rawgit.com/beautify-web/js-beautify/v1.10.3/js/lib/beautify.js"></script>
 
+        <!-- SortableJS CDN -->
+        <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+
         <!-- Tracery file -->
         <script defer src="JS/tracery.js"></script>
 
@@ -164,11 +167,18 @@
                             <div id="simpleEditorCollapse" class="collapse show" aria-labelledby="simpleEditorHeading" data-parent="#accordionDiv">
                               <div class="card-body">
                                 <button id="addSymbolInputBtn" class="btn btn-light btn-block">✔️ Add another symbol</button>
+                                <p id="sortableInstruction">
+                                  <svg class="bi bi-arrow-up-down" width="2em" height="2em" viewBox="0 0 20 20" fill="#16C60C" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M13 5.5a.5.5 0 01.5.5v9a.5.5 0 01-1 0V6a.5.5 0 01.5-.5z" clip-rule="evenodd"/>
+                                    <path fill-rule="evenodd" d="M12.646 4.646a.5.5 0 01.708 0l3 3a.5.5 0 01-.708.708L13 5.707l-2.646 2.647a.5.5 0 01-.708-.708l3-3zm-9 7a.5.5 0 01.708 0L7 14.293l2.646-2.647a.5.5 0 01.708.708l-3 3a.5.5 0 01-.708 0l-3-3a.5.5 0 010-.708z" clip-rule="evenodd"/>
+                                    <path fill-rule="evenodd" d="M7 4.5a.5.5 0 01.5.5v9a.5.5 0 01-1 0V5a.5.5 0 01.5-.5z" clip-rule="evenodd"/>
+                                  </svg>
+                                  All symbols in the list are sortable, drag them around to try it out!</p>
                                 <div id="symbolsInputParentDiv">
                                     <div class="form-group symbolsInputFormGroupDiv">
                                         <textarea class="form-control symbolInput" placeholder="🏷️ Give this symbol a title, e.g. 'animal'." rows="1"></textarea>
                                         <textarea class="form-control rulesetInput" placeholder="❓ Enter the word(s) or sentence(s) to randomize in this symbol, separated by commas. E.g. 'deer, fox, rabbit'." rows="1"></textarea>
-                                        <button class="btn btn-light btn-block">❌ Remove this symbol</button>
+                                        <button class="btn btn-light btn-block removeSymbolBtn">❌ Remove this symbol</button>
                                     </div>
                                 </div>
                                 <div class="form-group">

@@ -90,7 +90,7 @@ textarea::-webkit-scrollbar {
 }
 
 /*Will change dynamically in Script.js functions addsymbol() and removesymbol()*/
-.symbolsInputFormGroupDiv > button {
+.symbolsInputFormGroupDiv > button, #sortableInstruction {
     display:none;
 }
 
