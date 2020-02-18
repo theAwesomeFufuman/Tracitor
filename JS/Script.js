@@ -98,7 +98,7 @@ function addSymbolInput(setActive) {
         $('#sortableInstruction').show();
     }
 
-    if (window.innerWidth > 767) {
+    if (window.innerWidth > 990) {
         Sortable.create(symbolsInputParentDiv, {animation: 600});   
     }
 }
