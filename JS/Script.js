@@ -115,6 +115,7 @@ function removeSymbol() {
 
     if (numSymbols == 1) {
         $('.symbolsInputFormGroupDiv > button').hide();
+        $('#sortableInstruction').removeClass('d-none d-lg-block');
         $('#sortableInstruction').hide();
     }
 
